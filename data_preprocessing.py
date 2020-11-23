@@ -19,7 +19,7 @@ def processing_regression_data(filepath,spark):
     result1 = Table.join(rpm_120, (Table.OP == rpm_120.OP) & (Table.Speed == 120)).drop(rpm_120.OP)
     result2 = Table.join(rpm_2000, (Table.OP == rpm_2000.OP) & (Table.Speed == 2000)).drop(rpm_2000.OP)
     data = result1.union(result2)
-    data = data.drop('s_n').drop('Speed')
+    data = data.drop('s_n').drop('Speed').drop('OP')
 
     # remove null value
     def to_null(c):
